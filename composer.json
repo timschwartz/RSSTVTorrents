@@ -1,0 +1,28 @@
+{
+    "name": "timschwartz/RSSTVTorrents",
+    "description": "Parses RSS feeds and returns an array of TV shows and torrents",
+    "type": "library",
+    "require": {
+        "willvincent/feeds": "^1.1"
+    },
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Tim Schwartz",
+            "email": "tim@metaverse.systems"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "timschwartz\\RSSTVTorrents\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "timschwartz\\RSSTVTorrents\\RSSTVTorrentsServiceProvider"
+            ]
+        }
+    }
+}
