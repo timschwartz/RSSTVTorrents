@@ -17,12 +17,5 @@
             "App\\": "app/",
             "timschwartz\\RSSTVTorrents\\": "src/"
         }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "timschwartz\\RSSTVTorrents\\RSSTVTorrentsServiceProvider"
-            ]
-        }
     }
 }
