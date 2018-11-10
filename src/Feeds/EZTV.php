@@ -46,13 +46,4 @@ class EZTV extends RSS
 
         return $this->torrents;
     }
-
-/*
-    public static function checkFeedURL($url)
-    {
-        if(in_array($url, self::$valid_feeds)) return true;
-        
-        return false;
-    }
-*/
 }
