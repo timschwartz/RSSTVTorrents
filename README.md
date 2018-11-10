@@ -1,2 +1,2 @@
-# rss-tv-torrents
+# RSSTVTorrents
 Parses RSS feeds and returns an array of TV shows and torrents

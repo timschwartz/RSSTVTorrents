@@ -1,11 +1,12 @@
 <?php
 
-namespace timschwartz\RSSTVTorrents;
+namespace timschwartz\RSSTVTorrents\Feeds;
+
 use timschwartz\RSSTVTorrents\RSS;
 
 class EZTV extends RSS
 {
-    private $valid_feeds = array("https://eztv.re/ezrss.xml");
+    public static $valid_feeds = array("https://eztv.re/ezrss.xml");
 
     public function getTorrents()
     {
@@ -46,10 +47,12 @@ class EZTV extends RSS
         return $this->torrents;
     }
 
+/*
     public static function checkFeedURL($url)
     {
-        if(in_array($url, $this->valid_feeds)) return true;
+        if(in_array($url, self::$valid_feeds)) return true;
         
         return false;
     }
+*/
 }

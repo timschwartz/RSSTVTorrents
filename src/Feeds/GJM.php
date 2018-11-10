@@ -1,9 +1,13 @@
 <?php
 
-namespace App\RSS;
+namespace timschwartz\RSSTVTorrents\Feeds;
+
+use timschwartz\RSSTVTorrents\RSS;
 
 class GJM extends RSS
 {
+    public static $valid_feeds = array("https://www.goodjobmedia.com/feed/");
+
     public function getTorrents()
     {
         if(count($this->torrents)) return $this->torrents;
