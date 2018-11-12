@@ -5,7 +5,7 @@
     "require": {
         "willvincent/feeds": "^1.1"
     },
-    "license": "MIT License",
+    "license": "MIT",
     "authors": [
         {
             "name": "Tim Schwartz",
