@@ -22,6 +22,13 @@ class GJM extends RSS
             $dom = new \DOMDocument;
             $dom->loadHTML($item->get_content());
 
+            $imgs = $dom->getElementsByTagName('img');
+            foreach($imgs as $img) 
+            {
+                $dimensions = explode(",", $img->getAttribute('data-orig-size'));
+                $size = $dimensions[1]."p";
+            }
+
             $links = $dom->getElementsByTagName('a');
             foreach($links as $link)
             {
@@ -31,7 +38,7 @@ class GJM extends RSS
                 if(!isset($this->torrents[$title])) $this->torrents[$title] = array();
                 if(!isset($this->torrents[$title][$episode])) $this->torrents[$title][$episode] = array();
                 array_push($this->torrents[$title][$episode],
-                    array('magnetURI'=>$url)
+                    array('magnetURI'=>$url, 'size'=>$size)
                 );
             }
         }

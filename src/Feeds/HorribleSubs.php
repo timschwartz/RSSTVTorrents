@@ -20,8 +20,8 @@ class HorribleSubs extends RSS
             $title = $item->get_title();
 
             $resolution = "SD";
-            if(stripos($title, "720p") === true) $resolution = "720p";
-            if(stripos($title, "1080p") === true) $resolution = "1080p";
+            if(stripos($title, "720p") !== false) $resolution = "720p";
+            if(stripos($title, "1080p") !== false) $resolution = "1080p";
 
             $title_parts = explode(" - ", $title);
             if(count($title_parts) == 1) continue;
@@ -31,15 +31,13 @@ class HorribleSubs extends RSS
             if(count($title_parts) == 3)
             {
                 $title.= " - ".$title_parts[1];
-                $episode = str_replace(" [480p].mkv", "", $title_parts[2]);
-                $episode = str_replace(" [720p].mkv", "", $title_parts[2]);
-                $episode = str_replace(" [1080p].mkv", "", $title_parts[2]);
+                $episode_parts = explode(" ", $title_parts[2]);
+                $episode = $episode_parts[0];
             }
             else
             {
-                $episode = str_replace(" [480p].mkv", "", $title_parts[1]);
-                $episode = str_replace(" [720p].mkv", "", $title_parts[1]);
-                $episode = str_replace(" [1080p].mkv", "", $title_parts[1]);
+                $episode_parts = explode(" ", $title_parts[1]);
+                $episode = $episode_parts[0];
             }
 
             if(!isset($this->torrents[$title])) $this->torrents[$title] = array();

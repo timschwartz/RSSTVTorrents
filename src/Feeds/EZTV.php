@@ -17,8 +17,8 @@ class EZTV extends RSS
             $title = $item->get_title();
 
             $resolution = "SD";
-            if(stripos($title, "720p") === true) $resolution = "720p";
-            if(stripos($title, "1080p") === true) $resolution = "1080p";
+            if(stripos($title, "720p") !== false) $resolution = "720p";
+            if(stripos($title, "1080p") !== false) $resolution = "1080p";
 
             // Check for S01E01 format
             $title_match = preg_match("/S\d\dE\d\d/i", $title, $matches);

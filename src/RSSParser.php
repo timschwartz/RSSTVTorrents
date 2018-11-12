@@ -14,6 +14,7 @@ class RSSParser
         {
             if(in_array($file, $this->skip)) continue;
             if(stripos($file, ".php") === false) continue;
+            if(stripos($file, ".swp") !== false) continue;
 
             $classname = "timschwartz\\RSSTVTorrents\\Feeds\\".str_replace(".php", "", $file);
             array_push($classes, $classname);
