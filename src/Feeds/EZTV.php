@@ -41,7 +41,10 @@ class EZTV extends RSS
             $url = $data['magnetURI'][0]['data'];
 
             if(!isset($this->torrents[$title])) $this->torrents[$title] = array();
-            $this->torrents[$title][$episode] = $url;
+            if(!isset($this->torrents[$title][$episode])) $this->torrents[$title][$episode] = array();
+            array_push($this->torrents[$title][$episode],
+                array('magnetURI'=>$url, 'size'=>$size)
+            );
         }
 
         return $this->torrents;

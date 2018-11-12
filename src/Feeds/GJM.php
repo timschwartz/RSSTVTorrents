@@ -29,7 +29,10 @@ class GJM extends RSS
                 if(strpos($url, "magnet") === false) continue;
 
                 if(!isset($this->torrents[$title])) $this->torrents[$title] = array();
-                $this->torrents[$title][$episode] = $url;
+                if(!isset($this->torrents[$title][$episode])) $this->torrents[$title][$episode] = array();
+                array_push($this->torrents[$title][$episode],
+                    array('magnetURI'=>$url)
+                );
             }
         }
 

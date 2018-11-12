@@ -37,7 +37,11 @@ class HorribleSubs extends RSS
             }
 
             if(!isset($this->torrents[$title])) $this->torrents[$title] = array();
-            $this->torrents[$title][$episode] = $item->get_permalink();
+            if(!isset($this->torrents[$title][$episode])) $this->torrents[$title][$episode] = array();
+
+            array_push($this->torrents[$title][$episode],
+                array('magnetURI'=>$item->get_permalink())
+            );
         }
 
         return $this->torrents;
