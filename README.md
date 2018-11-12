@@ -3,14 +3,30 @@ Parses RSS feeds and returns an array of TV shows and torrents
 
 ## Usage
 
+### Available feeds
+
 ```
 $parser = new RSSParser();
-print_r($parser->getTorrents($url));
+print_r($parser->getURLs());
+
+Array
+(
+    [0] => https://eztv.re/ezrss.xml
+    [1] => https://www.goodjobmedia.com/feed/
+    [2] => https://horriblesubs.info/rss.php?res=all
+    [3] => https://horriblesubs.info/rss.php?res=sd
+    [4] => https://horriblesubs.info/rss.php?res=720
+    [5] => https://horriblesubs.info/rss.php?res=1080
+)
+
 ```
 
 ### Output
 
 ```
+$parser = new RSSParser();
+print_r($parser->getTorrents($url));
+
 Array
 (
     [Public Domain Show] => Array
