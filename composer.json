@@ -1,11 +1,11 @@
 {
-    "name": "timschwartz/RSSTVTorrents",
+    "name": "timschwartz/rsstvtorrents",
     "description": "Parses RSS feeds and returns an array of TV shows and torrents",
     "type": "library",
     "require": {
         "willvincent/feeds": "^1.1"
     },
-    "license": "MIT License",
+    "license": "MIT",
     "authors": [
         {
             "name": "Tim Schwartz",
