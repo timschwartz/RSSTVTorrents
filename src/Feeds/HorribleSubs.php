@@ -17,7 +17,13 @@ class HorribleSubs extends RSS
 
         foreach($this->items as $item)
         {
-            $title_parts = explode(" - ", $item->get_title());
+            $title = $item->get_title();
+
+            $resolution = "SD";
+            if(stripos($title, "720p") === true) $resolution = "720p";
+            if(stripos($title, "1080p") === true) $resolution = "1080p";
+
+            $title_parts = explode(" - ", $title);
             if(count($title_parts) == 1) continue;
 
             $title = str_replace("[HorribleSubs] ", "", $title_parts[0]);
@@ -40,7 +46,7 @@ class HorribleSubs extends RSS
             if(!isset($this->torrents[$title][$episode])) $this->torrents[$title][$episode] = array();
 
             array_push($this->torrents[$title][$episode],
-                array('magnetURI'=>$item->get_permalink())
+                array('magnetURI'=>$item->get_permalink(), 'resolution'=>$resolution)
             );
         }
 

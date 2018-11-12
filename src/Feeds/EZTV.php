@@ -15,7 +15,10 @@ class EZTV extends RSS
         foreach($this->items as $item)
         {
             $title = $item->get_title();
-            if(stripos($title, "720p") === false) continue;
+
+            $resolution = "SD";
+            if(stripos($title, "720p") === true) $resolution = "720p";
+            if(stripos($title, "1080p") === true) $resolution = "1080p";
 
             // Check for S01E01 format
             $title_match = preg_match("/S\d\dE\d\d/i", $title, $matches);
@@ -35,15 +38,12 @@ class EZTV extends RSS
             $data = $item->data['child']['http://xmlns.ezrss.it/0.1/'];
             $size = $data['contentLength'][0]['data'];
 
-            $MB = 1024 * 1024;
-            if($size < 100 * $MB) continue;
-            
             $url = $data['magnetURI'][0]['data'];
 
             if(!isset($this->torrents[$title])) $this->torrents[$title] = array();
             if(!isset($this->torrents[$title][$episode])) $this->torrents[$title][$episode] = array();
             array_push($this->torrents[$title][$episode],
-                array('magnetURI'=>$url, 'size'=>$size)
+                array('magnetURI'=>$url, 'size'=>$size, 'resolution'=>$resolution)
             );
         }
 
