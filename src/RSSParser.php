@@ -6,11 +6,9 @@ class RSSParser
 {
     private $skip = array(".", "..", "RSS.php", "RSSParser.php");
 
-    public function getTorrents($url)
+    private function getClasses()
     {
-        // Match feed with a class
-        $class = null;
-
+        $classes = array();
         $dir = scandir(__DIR__."/Feeds");
         foreach($dir as $file)
         {
@@ -18,11 +16,39 @@ class RSSParser
             if(stripos($file, ".php") === false) continue;
 
             $classname = "timschwartz\\RSSTVTorrents\\Feeds\\".str_replace(".php", "", $file);
-            if($classname::checkFeedURL($url)) $class = new $classname($url);
+            array_push($classes, $classname);
+        }
+        return $classes;
+    }
+
+    public function getTorrents($url)
+    {
+        // Match feed with a class
+        $class = null;
+
+        foreach($this->getClasses() as $classname)
+        {
+            if($classname::checkFeedURL($url))
+            {
+                $class = new $classname($url);
+                break;
+            }
         }
 
         if($class == null) throw new \Exception('Could not find a parser for feed: '.$url);
 
         return $class->getTorrents();
+    }
+
+    public function getURLs()
+    {
+        $urls = array();
+
+        foreach($this->getClasses() as $classname)
+        {
+            $urls = array_merge($urls, $classname::getURLs());
+        }
+
+        return $urls;
     }
 }

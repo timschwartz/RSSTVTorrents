@@ -28,5 +28,10 @@ abstract class RSS
         return false;
     }
 
+    public static function getURLs()
+    {
+        return static::$valid_feeds;
+    }
+
     abstract public function getTorrents();
 }
