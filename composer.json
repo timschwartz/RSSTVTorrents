@@ -3,7 +3,7 @@
     "description": "Parses RSS feeds and returns an array of TV shows and torrents",
     "type": "library",
     "require": {
-        "willvincent/feeds": "^1.1"
+        "willvincent/feeds": "^2.5.0"
     },
     "license": "MIT",
     "authors": [
